@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin:5% 10%;
+  background-image:url("frog.jpg");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #f1f1f1;
+}
+
+.error {
+  color:red;
+  display: none;
+}
+
+/* Full-width input fields */
+input[type=text],input[type=number], input[type=password],select,textarea, .gender {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+      <center><h1>Registration form</h1></center>
+    <form id="form" name="form">
+        <label for="first_name"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="first_name" id="first_name">
+        <p class="error" id="first_name_error">First Name Required</p>
+        <label for="last_name"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="last_name" id="last_name">
+        <p class="error" id="last_name_error">Last Name Required</p>
+        <label for="instituation_name"><b>Instituation Name</b></label>
+        <input type="text" placeholder="Enter Instituation Name" name="instituation_name" id="instituation_name">
+        <p class="error" id="instituation_error">Instituation Name Required</p>
+        <label for="game"><b>Game</b></label>
+        <select name="game" id="game">   
+            <option value="">Select Game</option>
+            <option value="kho-kho">kho-kho</option>  
+            <option value="tennies">tennies</option>  
+            <option value="carron board">carron board</option>  
+            <option value="food ball">food ball</option>
+            <option value="Rhythm">Rhythm</option> 
+            <option value="chess">chess</option> 
+            <option value="valley ball">valley ball</option>    
+        </select>
+        <p class="error" id="game_error">Game Required</p>
+        <label for="Gender"><b>Gender</b></label>
+        <div class="gender" id="gender" name="gender">
+            <input type="radio" value="Male" name="gender" > Male   
+            <input type="radio" value="Female" name="gender"> Female   
+            <input type="radio" value="Other" name="gender"> Other
+        </div>
+        <p class="error" id="gender_error">Gender Required</p>
+        <label for="phone_number"><b>Phone Number</b></label>
+        <input type="number" placeholder="Enter Phone Number" name="phone_number" id="phone_number" min="10" max="10">
+        <p class="error" id="phone_error">Phone Number Required</p>
+        <label for="Gmail"><b>Gmail</b></label>
+        <input type="text" placeholder="Enter Gmail" name="gmail" id="gmail">
+        <p class="error" id="gmail_error">Gmail Required</p>
+        <p class="error" id="valid_gmail_error">Please Enter Vaild Gmail</p>
+        
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password">
+        <p class="error" id="password_error">Password Required</p>
+        <label for="address"><b>Current Address</b></label>
+        <textarea placeholder="Enter Current Address" name="address" id="address"></textarea>
+        <p class="error" id="address_error">Current Address Required</p>
+        <label for="city"><b>City</b></label>
+        <input type="text" placeholder="Enter City" name="city" id="city">
+        <p class="error" id="city_error">City Address Required</p>
+        <label for="country"><b>Country</b></label>
+        <input type="text" placeholder="Enter Country" name="country" id="country">
+        <p class="error" id="country_error">Country Required</p>
+        <center><button type="btn" class="registerbtn" id="register" onclick="return validate()">Register</button></center>
+        
+    </form>
+</div>
+</body>
+</html>
+<script>
+function validate() {
+        document.getElementById('first_name_error').style.display = "none";
+        document.getElementById('last_name_error').style.display = "none";
+        document.getElementById('instituation_error').style.display = "none";
+        document.getElementById('game_error').style.display = "none";
+        document.getElementById('gender_error').style.display = "none";
+        document.getElementById('phone_error').style.display = "none";
+        document.getElementById('gmail_error').style.display = "none";
+        document.getElementById('password_error').style.display = "none";
+        document.getElementById('address_error').style.display = "none";
+        document.getElementById('city_error').style.display = "none";
+        document.getElementById('game_error').style.display = "none";
+        document.getElementById('country_error').style.display = "none";
+        var error = true;
+        var first_name = document.form.first_name.value;
+        var last_name = document.form.last_name.value;
+        var instituation_name = document.form.instituation_name.value;
+        var game = document.form.game.value;
+        var gender = document.form.gender.value;
+        var phone_number = document.form.phone_number.value;
+        var gmail = document.form.gmail.value;
+        var password = document.form.password.value;
+        var address = document.form.address.value;
+        var city = document.form.city.value;
+        var country = document.form.country.value;
+
+        if(first_name == null || first_name == '') {
+            document.getElementById('first_name_error').style.display = "block";
+            error = false;
+        }
+        if(last_name == null || last_name == ''){
+            document.getElementById('last_name_error').style.display = "block";
+          error =  false;
+        }
+        if(instituation_name == null || instituation_name == ''){
+            document.getElementById('instituation_error').style.display = "block";
+            error =  false;
+        }
+        if(game == null || game == ''){
+          document.getElementById('game_error').style.display = "block";
+          error =  false;
+        }
+        if(gender == null || gender == ''){
+          document.getElementById('gender_error').style.display = "block";
+          error =  false;
+        }
+        if(phone_number == null || phone_number == ''){
+          document.getElementById('phone_error').style.display = "block";
+          error =  false;
+        }
+        if(gmail == null || gmail == ''){
+          document.getElementById('gmail_error').style.display = "block";
+          error =  false;
+        }
+        if(gmail) {
+          if(/@gmail\.com$/.test(gmail)) {
+          } else {
+            document.getElementById('valid_gmail_error').style.display = "block";
+            error = false;
+          }
+        }
+        if(password == null || password == ''){
+          document.getElementById('password_error').style.display = "block";
+          error =  false;
+        }
+        if(address == null || address == ''){
+          document.getElementById('address_error').style.display = "block";
+          error =  false;
+        }
+        if(city == null || city == ''){
+          document.getElementById('city_error').style.display = "block";
+          error =  false;
+        }
+        if(country == null || country == ''){
+          document.getElementById('country_error').style.display = "block";
+            error =  false;
+        } 
+        return error;
+    }
+</script>
